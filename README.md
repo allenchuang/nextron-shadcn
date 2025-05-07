@@ -52,6 +52,112 @@ npm run electron:build-mac-universal  Universal build for MacOs**
 
 **MacOs versions can only be build using a Mac.
 
+### Deployment to Vercel ( web application ) ###
+To deploy your web application to Vercel, follow these steps:
+
+1. Create a `vercel.json` file in your project root with the following configuration:
+```json
+{
+  "buildCommand": "yarn next:build",
+  "outputDirectory": "renderer/.next",
+  "framework": "nextjs",
+  "installCommand": "yarn install"
+}
+```
+
+2. Push your code to your Git repository
+
+3. Connect your repository to Vercel:
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "New Project"
+   - Import your repository
+   - Vercel will automatically detect the Next.js configuration
+   - Click "Deploy"
+
+Important Notes:
+- The web version will be built using the `next:build` command
+- Make sure any Electron-specific code is wrapped in environment checks
+- Environment variables can be configured in the Vercel dashboard
+- The web version will be served from the `renderer/.next` directory
+
+### Cross-Platform Development Notes ###
+When developing for both web and desktop platforms, keep these important considerations in mind:
+
+1. **Environment-Specific Code:**
+```typescript
+// Example of environment-specific code wrapping
+if (process.env.BUILD_TARGET === 'desktop') {
+  // Electron-specific code here
+} else {
+  // Web-specific code here
+}
+```
+
+2. **Native Dependencies:**
+- Any native dependencies or Electron-specific features need to be:
+  - Made conditional based on the platform
+  - Provided with web alternatives
+  - Or completely excluded from the web build
+
+3. **Environment Variables:**
+- Maintain separate environment configurations for:
+  - Web deployment (Vercel dashboard)
+  - Desktop development
+  - Production builds
+- Ensure all necessary variables are properly set in each environment
+
+4. **Build Process:**
+- The web build process is handled by Vercel
+- Desktop builds use electron-builder
+- Make sure your code can handle both build processes
+
+### Deployment to binary ( desktop application ) ###
+To build and distribute your desktop application, you have several options:
+
+1. **Build for current platform:**
+```bash
+yarn electron:build-current
+```
+This will create a distributable for your current operating system.
+
+2. **Build for specific platforms:**
+```bash
+# Windows (32-bit)
+yarn electron:build-win32
+
+# Windows (64-bit)
+yarn electron:build-win64
+
+# Linux
+yarn electron:build-linux
+
+# macOS
+yarn electron:build-mac
+
+# macOS Universal (Intel + Apple Silicon)
+yarn electron:build-mac-universal
+```
+
+3. **Build for all platforms:**
+```bash
+yarn electron:build-all
+```
+
+Important Notes:
+- The built applications will be available in the `dist` directory
+- For macOS builds, you must build on a macOS system
+- For Windows builds, you can build on any platform
+- For Linux builds, you can customize the package type (deb, rpm, snap, etc.) in `electron-builder.yml`
+- Make sure to test the built application before distribution
+- Consider code signing for production releases
+
+Distribution Options:
+- Windows: `.exe` installer or portable executable
+- macOS: `.dmg` or `.pkg` installer
+- Linux: `.deb`, `.rpm`, `.AppImage`, or `.snap` (configurable)
+
+For more advanced distribution options, refer to the [electron-builder documentation](https://www.electron.build/).
+
 **For full usage, please read the [Nextron documentation](https://github.com/saltyshiomix/nextron).**
 ## Shadcn/ui
 To install Shadcn/ui components, just use `npx shadcn@latest add MY-COMPONENT` as explained in the [official documentation](https://ui.shadcn.com/docs/installation/next).
