@@ -16,6 +16,7 @@ function IndexPage() {
         Nextron ( Next.Js + Electron ) Boilerplate
       </h1>
       <Button>Click me</Button>
+      <Button>Test</Button>
       <p>With TypeScript, TailwindCSS and Shadcn/ui</p>
       <p>Crossbuild for Web or Desktop</p>
     </main>
