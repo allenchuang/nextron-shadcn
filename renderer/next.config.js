@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  output: 'export',
+  // Only enable static export for desktop builds
+  ...(process.env.BUILD_TARGET === 'desktop' ? { output: 'export' } : {}),
   distDir: process.env.NODE_ENV === 'production' ? '../dist' : '.next',
   trailingSlash: true,
   images: {
