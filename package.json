@@ -1,15 +1,15 @@
 {
-  "name": "boilerplate-nextron-shadcn",
-  "description": "Nextron project boilerplate ( Next.Js + Electron ) in TypeScript, with TailwindCSS + Shadcn/ui, with web and desktop build",
+  "name": "boilerplate-nextron-shadcn-deployment",
+  "description": "Nextron project boilerplate ( Next.Js + Electron ) in TypeScript, with TailwindCSS + Shadcn/ui, with web and desktop build - forked from https://github.com/allenchuang/nextron-shadcn",
   "version": "1.2.0",
-  "author": "Maxime Premont <maxime.premont@gmail.com>",
+  "author": "Allen Chuang <mr.allenchuang@gmail.com>",
   "main": "app/background.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MaximePremont/boilerplate-nextron-shadcn"
+    "url": "https://github.com/allenchuang/nextron-shadcn"
   },
-  "homepage": "https://github.com/MaximePremont/boilerplate-nextron-shadcn",
+  "homepage": "https://github.com/allenchuang/nextron-shadcn",
   "keywords": [
     "electron",
     "typescript",
@@ -21,8 +21,8 @@
     "app-router"
   ],
   "bugs": {
-    "url": "https://github.com/MaximePremont/boilerplate-nextron-shadcn/issues/new?assignees=&labels=bug&projects=&template=2-bug-report.yml&title=Bug%3A+",
-    "email": "maxime.premont@gmail.com"
+    "url": "https://github.com/allenchuang/nextron-shadcn/issues/new?assignees=&labels=bug&projects=&template=2-bug-report.yml&title=Bug%3A+",
+    "email": "mr.allenchuang@gmail.com"
   },
   "scripts": {
     "format": "next lint renderer --fix && prettier --write .",
